@@ -1,0 +1,9 @@
+CHIMERAX Community License v1.0
+
+Copyright (c) 2026 CHIMERAX
+
+Permission is granted to use, study, fork, modify, and distribute this software for educational, research, evaluation, and hackathon purposes.
+
+Commercial use, SaaS offerings, hosted services, resale, sublicensing, token launches, financial products, and proprietary derivatives based on this software require prior written permission from CHIMERAX.
+
+THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND.

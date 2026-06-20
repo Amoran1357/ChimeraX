@@ -1,0 +1,23 @@
+{
+“compilerOptions”: {
+“target”: “ES2022”,
+“lib”: [“dom”, “dom.iterable”, “esnext”],
+“strict”: true,
+“allowJs”: true,
+“skipLibCheck”: true,
+“noEmit”: true,
+“module”: “esnext”,
+“moduleResolution”: “bundler”,
+“resolveJsonModule”: true,
+“isolatedModules”: true,
+“jsx”: “preserve”,
+“incremental”: true
+},
+“include”: [
+“/*.ts”,
+“/*.tsx”
+],
+“exclude”: [
+“node_modules”
+]
+}
