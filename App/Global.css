@@ -1,0 +1,15 @@
+body {
+margin: 0;
+background: #05070d;
+color: #e6edf3;
+font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+a {
+color: #6ee7ff;
+text-decoration: none;
+}
+
+* {
+    box-sizing: border-box;
+    }
