@@ -17,6 +17,14 @@
     "**/*.ts",
     "**/*.tsx"
   ],
+  {
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./*"]
+    }
+  }
+}
   "exclude": [
     "node_modules"
   ]
