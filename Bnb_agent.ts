@@ -1,4 +1,3 @@
-lib/bnb-agent.ts
 export interface AgentDecision {
   decision: string;
   confidence: number;
