@@ -21,6 +21,16 @@ CHIMERAX Dashboard
     <>
       <h2>Final Decision: {data.decision}</h2>
       <h3>Elder Votes</h3>
+      <div style={card()}>
+  <h3>Elders</h3>
+  <p>{data.votes?.length || 0} Active</p>
+
+  <h3>BNB Agent</h3>
+  <p>{data.agentAction?.status}</p>
+
+  <h3>Trade Engine</h3>
+  <p>{data.trade?.status}</p>
+</div>
       <ul>
         {data.votes.map((v: any, i: number) => (
           <li key={i}>
