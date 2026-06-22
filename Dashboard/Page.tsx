@@ -44,3 +44,32 @@ CHIMERAX Dashboard
 
 );
 }
+import { momentumElder }
+from "@/lib/elders/momentum";
+
+import { generateConsensus }
+from "@/lib/consensus";
+
+export default async function Dashboard() {
+
+  const momentum =
+    await momentumElder();
+
+  const consensus =
+    await generateConsensus([momentum]);
+
+  return (
+    <main>
+      <h1>ChimeraX Dashboard</h1>
+
+      <pre>
+        {JSON.stringify(momentum,null,2)}
+      </pre>
+
+      <pre>
+        {JSON.stringify(consensus,null,2)}
+      </pre>
+
+    </main>
+  );
+}
