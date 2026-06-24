@@ -17,3 +17,21 @@ export async function findGrantOpportunities() {
   ];
 
 }
+import { supabase }
+from "@/lib/db/supabase";
+
+export async function saveGrantOpportunity(
+  program: string,
+  fitScore: number,
+  category: string
+) {
+
+  return supabase
+    .from("grant_opportunities")
+    .insert({
+      program,
+      fit_score: fitScore,
+      category
+    });
+
+}
