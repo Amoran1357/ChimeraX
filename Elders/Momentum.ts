@@ -26,3 +26,23 @@ export async function momentumElder(
   };
 
 }
+import { saveElderVote }
+from "@/lib/db/elders";
+
+export async function momentumElder() {
+
+  const result = {
+    elder: "Momentum",
+    vote: "BUY",
+    confidence: 84
+  };
+
+  await saveElderVote(
+    result.elder,
+    result.vote,
+    result.confidence
+  );
+
+  return result;
+
+}
