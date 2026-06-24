@@ -39,3 +39,15 @@ return NextResponse.json(
 );
 }
 }
+import { supabase } from "@/lib/db/supabase";
+
+export async function GET() {
+
+  const { data } =
+    await supabase
+      .from("elders")
+      .select("*");
+
+  return Response.json(data);
+
+}
