@@ -1,20 +1,20 @@
-export async function analyzePortfolio(
-  balances:any[]
+import { getBalance }
+from "./wallet";
+
+export async function
+analyzePortfolio(
+  address:`0x${string}`
 ) {
 
-  const total =
-    balances.reduce(
-      (sum,b) => sum + b.value,
-      0
-    );
+  const balance =
+    await getBalance(address);
 
   return {
 
-    totalValue: total,
+    address,
 
-    diversificationScore: 81,
-
-    riskLevel: "MEDIUM"
+    bnbBalance:
+      Number(balance)/1e18
 
   };
 
