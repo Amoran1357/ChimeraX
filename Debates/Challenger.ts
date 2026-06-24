@@ -15,3 +15,15 @@ export function challenge(votes:any[]) {
   };
 
 }
+export function challengeMajority(
+  votes:any[]
+) {
+
+  const minority =
+    votes.filter(
+      v => v.vote !== "BUY"
+    );
+
+  return minority;
+
+}
