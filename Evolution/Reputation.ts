@@ -25,3 +25,11 @@ export function getReputation() {
   return reputation;
 
 }
+export function updateElderReputation(
+  current:number,
+  score:number
+) {
+
+  return current + score;
+
+}
