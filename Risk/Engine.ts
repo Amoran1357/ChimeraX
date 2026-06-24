@@ -1,14 +1,21 @@
-export async function riskEngine(
-  signal:any
+export async function
+riskEngine(
+  confidence:number
 ) {
+
+  if(confidence < 50) {
+
+    return {
+      approved:false
+    };
+
+  }
 
   return {
 
-    approved: true,
+    approved:true,
 
-    maxPosition: 5,
-
-    maxDrawdown: 10
+    maxPositionSize:5
 
   };
 
