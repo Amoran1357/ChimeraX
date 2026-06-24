@@ -55,3 +55,21 @@ export async function getGovernanceDashboard() {
     analysis
   };
 }
+import { supabase }
+from "@/lib/db/supabase";
+
+export async function saveGovernanceDecision(
+  proposal: string,
+  recommendation: string,
+  confidence: number
+) {
+
+  return supabase
+    .from("governance_decisions")
+    .insert({
+      proposal,
+      recommendation,
+      confidence
+    });
+
+}
