@@ -1,5 +1,8 @@
 "use client";
 
+import { useEffect, useState } from "react";
+import Layout from "@/components/Layout";
+
 import { useEffect, useState } from “react”;
 
 export default function EldersPage() {
