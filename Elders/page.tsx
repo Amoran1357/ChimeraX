@@ -3,13 +3,13 @@
 import { useEffect, useState } from "react";
 import Layout from "@/components/Layout";
 
-import { useEffect, useState } from “react”;
+import { useEffect, useState } from "react";
 
 export default function EldersPage() {
 const [elders, setElders] = useState<any[]>([]);
 
 useEffect(() => {
-fetch(”/api/elders”)
+fetch("/api/elders")
 .then(res => res.json())
 .then(setElders);
 }, []);
