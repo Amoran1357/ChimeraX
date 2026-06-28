@@ -1,19 +1,39 @@
-export function consensus(votes: any[]) {
-let score = { BUY: 0, SELL: 0, HOLD: 0 };
+export async function generateConsensus(votes: any[]) {
 
-const weights: any = {
-momentum: 1.2,
-narrative: 1.0,
-whale: 1.3,
-risk: 1.5,
-chaos: 1.8
-};
+  const buyVotes =
+    votes.filter(v => v.vote === "BUY").length;
 
-votes.forEach(v => {
-const weight = weights[v.elder] || 1;
-score[v.vote] += (v.confidence || 50) * weight;
-});
+  const sellVotes =
+    votes.filter(v => v.vote === "SELL").length;
 
-return Object.entries(score)
-.sort((a, b) => b[1] - a[1])[0][0];
+  const holdVotes =
+    votes.filter(v => v.vote === "HOLD").length;
+
+  let action = "HOLD";
+
+  if (buyVotes > sellVotes && buyVotes > holdVotes)
+    action = "BUY";
+
+  if (sellVotes > buyVotes && sellVotes > holdVotes)
+    action = "SELL";
+
+  return {
+    action,
+    confidence:
+      Math.round(
+        (Math.max(buyVotes,sellVotes,holdVotes)
+          / votes.length) * 100
+      )
+  };
 }
+await recordAudit(
+
+2,
+
+"Consensus Engine",
+
+asset,
+
+consensus.reasoning
+
+);
