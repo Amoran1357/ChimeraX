@@ -3,13 +3,13 @@
 import { useEffect, useState } from "react";
 import Layout from "@/components/Layout";
 
-import { useEffect, useState } from “react”;
+import { useEffect, useState } from "react";
 
 export default function MarketPage() {
 const [market, setMarket] = useState(null);
 
 useEffect(() => {
-fetch(”/api/market”)
+fetch("/api/market")
 .then(res => res.json())
 .then(setMarket);
 }, []);
