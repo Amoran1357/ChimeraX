@@ -11,20 +11,18 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "incremental": true
-  },
-  "include": [
-    "**/*.ts",
-    "**/*.tsx"
-  ],
-  {
-  "compilerOptions": {
+    "incremental": true,
+
     "baseUrl": ".",
     "paths": {
       "@/*": ["./*"]
     }
-  }
-}
+  },
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.d.ts"
+  ],
   "exclude": [
     "node_modules"
   ]
