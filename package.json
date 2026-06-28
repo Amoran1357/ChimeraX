@@ -29,3 +29,17 @@
     "viem": "^2.31.7"
   }
 }
+{
+  "name": ChimeraX",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    ...
+  },
+  "dependencies": {
+    ...
+  },
+  "devDependencies": {
+    ...
+  }
+}
