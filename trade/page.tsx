@@ -3,13 +3,13 @@
 import { useEffect, useState } from "react";
 import Layout from "@/components/Layout";
 
-import { useEffect, useState } from “react”;
+import { useEffect, useState } from "react";
 
 export default function TradesPage() {
 const [trades, setTrades] = useState<any[]>([]);
 
 useEffect(() => {
-fetch(”/api/trade”)
+fetch("/api/trade")
 .then(res => res.json())
 .then(setTrades);
 }, []);
