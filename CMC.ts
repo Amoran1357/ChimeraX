@@ -1,0 +1,33 @@
+export async function fetchCMCData() {
+const apiKey = process.env.CMC_API_KEY;
+
+if (!apiKey) {
+// fallback mock (so Vercel never breaks)
+return {
+btc: 65000,
+eth: 3200,
+volume: “mock”,
+fearGreed: 62,
+newsSentiment: 0.71,
+timestamp: Date.now()
+};
+}
+
+const res = await fetch(
+“https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest”,
+{
+headers: {
+“X-CMC_PRO_API_KEY”: apiKey
+}
+}
+);
+
+const data = await res.json();
+
+return {
+btc: data.data?.[0]?.quote?.USD?.price,
+eth: data.data?.[1]?.quote?.USD?.price,
+volume: data.data?.[0]?.quote?.USD?.volume_24h,
+timestamp: Date.now()
+};
+}

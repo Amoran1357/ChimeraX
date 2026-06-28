@@ -25,3 +25,14 @@ timestamp: cmc.timestamp
 
 };
 }
+await recordAudit(
+
+0,
+
+"Market Intelligence",
+
+asset,
+
+"Market data analysed"
+
+);

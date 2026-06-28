@@ -26,14 +26,5 @@ export async function generateConsensus(votes: any[]) {
       )
   };
 }
-await recordAudit(
-
-2,
-
-"Consensus Engine",
-
-asset,
-
-consensus.reasoning
-
-);
+import { rememberDecision }
+from "@/lib/memory/decisions";
