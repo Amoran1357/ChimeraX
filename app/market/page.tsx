@@ -1,32 +1,48 @@
-“use client”;
+"use client";
 
-import { useEffect, useState } from “react”;
-import Layout from “@/components/Layout”;
+import { useEffect, useState } from "react";
 
-export default function Market() {
-const [data, setData] = useState(null);
+export default function MarketPage() {
+  const [market, setMarket] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
 
-useEffect(() => {
-fetch(”/api/market”)
-.then(r => r.json())
-.then(setData);
-}, []);
+  useEffect(() => {
+    fetch("/api/market")
+      .then((res) => res.json())
+      .then((data) => {
+        setMarket(data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error(err);
+        setLoading(false);
+      });
+  }, []);
 
-return (
-Market Intelligence Feed
+  return (
+    <main
+      style={{
+        padding: 24,
+        fontFamily: "Arial, sans-serif",
+      }}
+    >
+      <h1>📈 Market Intelligence</h1>
 
-  {!data ? (
-    <p>Loading CMC stream...</p>
-  ) : (
-    <pre style={{
-      background: "#0a0f1a",
-      padding: 16,
-      border: "1px solid #1f2937"
-    }}>
-      {JSON.stringify(data, null, 2)}
-    </pre>
-  )}
-</Layout>
-
-);
+      {loading ? (
+        <p>Loading market intelligence...</p>
+      ) : (
+        <pre
+          style={{
+            background: "#111827",
+            color: "#22c55e",
+            padding: 20,
+            borderRadius: 12,
+            overflowX: "auto",
+          }}
+        >
+          {JSON.stringify(market, null, 2)}
+        </pre>
+      )}
+    </main>
+  );
 }
