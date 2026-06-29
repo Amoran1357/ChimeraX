@@ -3,27 +3,37 @@
 import { useEffect, useState } from "react";
 import Layout from "@/components/Layout";
 
-import { useEffect, useState } from "react";
-
 export default function MarketPage() {
-const [market, setMarket] = useState(null);
+  const [market, setMarket] = useState<any>(null);
 
-useEffect(() => {
-fetch("/api/market")
-.then(res => res.json())
-.then(setMarket);
-}, []);
+  useEffect(() => {
+    fetch("/api/market")
+      .then((res) => res.json())
+      .then(setMarket)
+      .catch(console.error);
+  }, []);
 
-return (
-<main style={{ padding: 24 }}>
-Market Intelligence
+  return (
+    <Layout>
+      <main style={{ padding: 24 }}>
+        <h1>Market Intelligence</h1>
 
-  {!market ? (
-    <p>Loading CMC data...</p>
-  ) : (
-    <pre>{JSON.stringify(market, null, 2)}</pre>
-  )}
-</main>
-
-);
+        {!market ? (
+          <p>Loading CoinMarketCap market data...</p>
+        ) : (
+          <pre
+            style={{
+              background: "#111",
+              color: "#00ff88",
+              padding: 16,
+              borderRadius: 8,
+              overflowX: "auto",
+            }}
+          >
+            {JSON.stringify(market, null, 2)}
+          </pre>
+        )}
+      </main>
+    </Layout>
+  );
 }
