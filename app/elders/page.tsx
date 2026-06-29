@@ -1,40 +1,46 @@
-“use client”;
+"use client";
 
-import { useEffect, useState } from “react”;
-import Layout from “@/components/Layout”;
+import { useEffect, useState } from "react";
 
 export default function Elders() {
-const [data, setData] = useState<any[]>([]);
+  const [data, setData] = useState<any[]>([]);
 
-useEffect(() => {
-fetch(”/api/elders”)
-.then(r => r.json())
-.then(setData);
-}, []);
+  useEffect(() => {
+    fetch("/api/elders")
+      .then((r) => r.json())
+      .then(setData)
+      .catch(console.error);
+  }, []);
 
-return (
-Elder Council Intelligence
+  return (
+    <main style={{ padding: 24 }}>
+      <h1>Elder Council Intelligence</h1>
 
-  <div style={{ display: "grid", gap: 12 }}>
-    {data.map((e, i) => (
-      <div key={i} style={card()}>
-        <h3>{e.elder.toUpperCase()}</h3>
-        <p>Vote: {e.vote}</p>
-        <p>Confidence: {e.confidence}%</p>
-        <p style={{ opacity: 0.7 }}>{e.reason}</p>
+      <div
+        style={{
+          display: "grid",
+          gap: 12,
+        }}
+      >
+        {data.map((e, i) => (
+          <div
+            key={i}
+            style={{
+              padding: 16,
+              border: "1px solid #333",
+              borderRadius: 8,
+            }}
+          >
+            <h3>{e.elder?.toUpperCase()}</h3>
+
+            <p>Vote: {e.vote}</p>
+
+            <p>Confidence: {e.confidence}</p>
+
+            <p>{e.reason}</p>
+          </div>
+        ))}
       </div>
-    ))}
-  </div>
-</Layout>
-
-);
-}
-
-function card() {
-return {
-background: “#0a0f1a”,
-padding: 16,
-border: “1px solid #1f2937”,
-borderRadius: 8
-};
+    </main>
+  );
 }
