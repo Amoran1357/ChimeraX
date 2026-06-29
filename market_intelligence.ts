@@ -1,38 +1,102 @@
-import { fetchCMCData } from “./cmc”;
+// =======================================================
+// ChimeraX Market Intelligence
+// =======================================================
 
-export async function getMarketIntelligence() {
-const cmc = await fetchCMCData();
+import { cmc } from "./CMC";
 
-const sentimentScore =
-cmc.volume > 1000000000 ? 0.8 : 0.55;
+export interface MarketReport{
 
-const volatility =
-Math.random() * 0.5 + 0.2;
+    sentiment:string;
 
-return {
-assets: {
-btc: cmc.btc,
-eth: cmc.eth
-},
+    volatility:number;
 
-sentimentScore,
-volatility,
-narrative:
-  sentimentScore > 0.7
-    ? "risk-on accumulation phase"
-    : "uncertain consolidation",
-timestamp: cmc.timestamp
+    liquidity:string;
 
-};
+    trend:string;
+
+    btc:number;
+
+    eth:number;
+
+    summary:string;
+
 }
-await recordAudit(
 
-0,
+class MarketIntelligence{
 
-"Market Intelligence",
+    async analyse(asset:string):Promise<MarketReport>{
 
-asset,
+        const snapshot = await cmc.snapshot();
 
-"Market data analysed"
+        return{
 
-);
+            sentiment:snapshot.sentiment,
+
+            volatility:32,
+
+            liquidity:
+                snapshot.macro?.liquidity ??
+                "Unknown",
+
+            trend:
+                snapshot.sentiment==="BULLISH"
+                ? "UPTREND"
+                : "DOWNTREND",
+
+            btc:snapshot.btc.price,
+
+            eth:snapshot.eth.price,
+
+            summary:
+                `${asset} market analysed successfully.`
+
+        };
+
+    }
+
+    // =======================================
+    // Future integrations
+    // =======================================
+
+    async orderBook(){
+
+        // TODO
+        // Binance DEX
+
+    }
+
+    async derivatives(){
+
+        // TODO
+        // Funding
+        // OI
+        // Liquidations
+
+    }
+
+    async onChain(){
+
+        // TODO
+
+        // Glassnode
+
+        // Arkham
+
+        // Nansen
+
+    }
+
+    async macro(){
+
+        // TODO
+
+        // CoinMarketCap Skill Hub
+
+        // daily_market_overview
+
+    }
+
+}
+
+export const marketIntelligence =
+new MarketIntelligence();
